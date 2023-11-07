@@ -1,14 +1,15 @@
 library(spacexr)
+library(SeuratDisk)
 library(Matrix)
+library(Giotto)
 
 samples = c('CVD1', 'CVD2', 'CVD3', 'CVD4', 'CVD5',
             'CVD6', 'CVD7', 'CVD8', 'CVD9', 'CVD10')
 
-#Name of annotation in serurat object
+#Name of annotation in seurat object
 Anno_col <- "Final_annotation"
 
-#sc_obj <- LoadH5Seurat(snrna_path)
-sc <- LoadH5Seurat("athero_subset_4000.h5seurat")
+sc_obj <- LoadH5Seurat("athero_subset3000.h5seurat")
 
 datadir <- "C:/Users/alban/Data/CVD"
 
@@ -31,7 +32,7 @@ nUMI <- nUMI_df$colSums.sc_obj.assays.RNA
 names(nUMI) <- rownames(nUMI_df)
 
 
-### Create the Reference object
+### Create the sc Reference object
 reference <- Reference(counts, cell_types, nUMI)
 
 
@@ -55,6 +56,7 @@ for (sample in samples) {
   coords <- locs[, -3]
   rownames(coords) <- locs[, 3]
   
+  #Create spacexr spatial object
   puck <- SpatialRNA(coords, counts)
   
   barcodes <- colnames(puck@counts) # pixels to be used (a list of barcode names). 
@@ -65,7 +67,7 @@ for (sample in samples) {
   myRCTD <- run.RCTD(myRCTD, doublet_mode = 'full')
   results <- myRCTD@results
   
-  resultsdir <- paste0('RCTD_fullRun/', sample, '_results')
+  resultsdir <- paste0('RCTD_results/', sample, '_results')
   dir.create(resultsdir)
   
   # normalize the cell type proportions to sum to 1.
@@ -75,23 +77,12 @@ for (sample in samples) {
   write.csv(norm_weights, paste0(resultsdir, '/norm_weights.txt'))
   
   
-  # make the plots 
-  # Plots the confident weights for each cell type as in full_mode (saved as 
-  # 'results/cell_type_weights_unthreshold.pdf')
-  plot_weights(cell_type_names, spatialRNA, resultsdir, norm_weights) 
+  # Uncomment to save plots of cell type weights
+  
+  #plot_weights(cell_type_names, spatialRNA, resultsdir, norm_weights) 
+  
   # Plots all weights for each cell type as in full_mode. (saved as 
   # 'results/cell_type_weights.pdf')
-  plot_weights_unthreshold(cell_type_names, spatialRNA, resultsdir, norm_weights) 
-  # Plots the weights for each cell type as in doublet_mode. (saved as 
-  # 'results/cell_type_weights_doublets.pdf')
-  #plot_weights_doublet(cell_type_names, spatialRNA, resultsdir, results$weights_doublet, 
-  #                     results$results_df) 
-  # Plots the number of confident pixels of each cell type in 'full_mode'. (saved as 
-  # 'results/cell_type_occur.pdf')
-  plot_cond_occur(cell_type_names, resultsdir, norm_weights, spatialRNA)
-  # makes a map of all cell types, (saved as 
-  # 'results/all_cell_types.pdf')
-  #plot_all_cell_types(results$results_df, spatialRNA@coords, cell_type_names, resultsdir)
   
   
 }

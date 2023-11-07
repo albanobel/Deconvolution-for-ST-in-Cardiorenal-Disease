@@ -1,0 +1,54 @@
+---
+title: "scRNA_subset"
+output: html_document
+date: "2023-01-07"
+---
+
+## Load in data from RDS file
+```{r}
+library(Seurat)
+library(SeuratDisk)
+athero <- readRDS("C:/Users/alban/Data/CVD/merged_athero_v18082022.rds")
+```
+60676 cells x 25049 genes
+
+
+## Get overview of annotations and meta data
+```{r}
+table(unlist(athero@meta.data[["orig.ident"]]))
+```
+```{r}
+table(unlist(athero@meta.data[["Phase"]]))
+```
+```{r}
+table(unlist(athero@meta.data[["Consensus_annotation"]]))
+```
+```{r}
+table(unlist(athero@meta.data[["Final_annotation"]]))
+```
+## Set active meta data identities
+```{r}
+athero <- SetIdent(athero, value = athero@meta.data$Final_annotation)
+```
+
+
+
+## Subset a number of cells per cell type
+```{r}
+athero_sub <- subset(athero, downsample = 3000, idents = c("B_cells", "Endothelial_cells", "Fibroblasts", "Macrophages_and_MDSCs", "NK_and_T_cells", "SMCs_Fibroblasts_Hybrids", "Mast_cells", "SMCs_maintype", "SMCs_subtype"))
+```
+
+```{r}
+table(unlist(athero_sub@meta.data[["Final_annotation"]]))
+```
+
+## Saveh5seurat file
+```{r}
+athero_sub <- DietSeurat(athero_sub, counts = TRUE, data = TRUE, scale.data = FALSE)
+
+athero_sub@assays$RNA@data <- athero_sub@assays$RNA@counts
+
+SaveH5Seurat(athero_sub, "athero_subset3000.h5seurat", overwrite = TRUE)
+
+Convert("athero_subset3000.h5Seurat", dest = "athero_subset3000.h5ad", overwrite = TRUE)
+```
