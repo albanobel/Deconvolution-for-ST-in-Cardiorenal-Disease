@@ -19,4 +19,4 @@ Spatial transcriptomics data was generated internally at Novo Nordisk using 10X 
 
 ## Poster
 
-<img src="Figures/Poster.PNG" width="800" align="center" /> <br>
+<img src="Figures/Poster.png" width="1000" align="center" /> <br>
