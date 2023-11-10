@@ -6,7 +6,7 @@ my_python_path = "C:/Users/alban/miniconda3/python.exe"
 output_path = "./DWLS_output"
 
 instrs = createGiottoInstructions(python_path = my_python_path)
-sc <- LoadH5Seurat("athero_subset_4000.h5seurat")
+sc <- LoadH5Seurat("athero_subset3000.h5seurat")
 
 datadir <- "C:/Users/alban/Data/CVD"
 
@@ -43,15 +43,15 @@ colnames(Sig_exp)<-unique(id)
 
 
 
-samples = c('CVD1', 'CVD2', 'CVD3', 'CVD4', 'CVD5',
-            'CVD6', 'CVD7', 'CVD8', 'CVD9', 'CVD10')
+samples = c('CVD1')#, 'CVD2', 'CVD3', 'CVD4', 'CVD5',
+          #  'CVD6', 'CVD7', 'CVD8', 'CVD9', 'CVD10')
 
 for (sample in samples) {
   
   path = file.path(datadir, sample)
   print(path)
   
-  resultsdir <- paste0('DWLS_fullRun2/', sample, '_results')
+  resultsdir <- paste0('DWLS_results/', sample, '_results')
   dir.create(resultsdir)
   
   instrs = createGiottoInstructions(save_plot = TRUE,
