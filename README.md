@@ -19,6 +19,6 @@ Kidney scRNA data was obtained from The Kidney Precision Medicine Project [KPMP]
 Spatial transcriptomics data was generated internally at Novo Nordisk using 10X Visium technology for FFPE samples.
 
 
-## Poster
+## Poster presented at ISMB-ECCB 2023 in Lyon
 
 <img src="Figures/Poster.png" width="1000" align="center" /> <br>
