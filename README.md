@@ -18,6 +18,15 @@ Kidney scRNA data was obtained from The Kidney Precision Medicine Project [KPMP]
 
 Spatial transcriptomics data was generated internally at Novo Nordisk using 10X Visium technology for FFPE samples.
 
+## Software and Packages
+RCTD was run using R 4.1.2 and the spacexr package (2.0.1). SpatialDWLS was run
+using the Giotto package (1.1.2) and R 4.1.2 with python 3.10 dependencies.
+Cell2location was run using the cell2location package (0.1) and python 3.10 and
+libraries pyro-ppl 1.8.0; scvi-tools 1.0.0; torch 1.9.0; numpy 1.23.4; scanpy 1.9.1;
+anndata 0.8.0.
+Packages Seurat 4.3.0, SeuratDisk 0.0.0.9020, SeuratData 0.2.2, tidyverse 1.3.2,
+ggplot 3.4.0 were used for data wrangling and visualizations.
+
 
 ## Poster presented at ISMB-ECCB 2023 in Lyon
 
