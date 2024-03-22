@@ -9,20 +9,7 @@ Authors: Alban Obel Slabowska, Charles Pyke, Henning Hvid, Leon Eyrich Jessen, S
 
 ## Data
 
-Single cell RNA reference data were obtained from public sources.
-
-## Supplementary Figures
-
-Supplementary Figure 1. Single cell RNA reference data UMAP with cell type labels.
-Top are major CVD cell types, bottom are major cell types within CKD atlas.
-CKD abbreviations as follows: PT, Proximal Tubular; EC, Endothelial Cell; TAL, Thick Ascending Limb; ATL, Ascending Thin Limb; IC, Intercalated Cell; CNT,Connecting Tubule; DTL, Descending Thin Limb; DCT, Distal Convoluted Tubule; PEC, Parietal Epithelial Cell; POD, Podocyte; PC, Principal Cell.
-
-Supplementary Figure 2: For each method deconvolution of sample CVD2 was repeated with multiple different reference sizes. Correlation between independent deconvolutions was calculated to determine degree of variation in prediction as a function of reference data size. Cell2location is observed to be more consistent across cell types.
-
-Supplementary Figure 3: The RMSRD between each pair of methods, with a lower value indication more similar results for the specific cell type.
-
-Supplementary Figure 4: Benchmarking the deconvolution time requirements across methods. For the reference preparation step the x-axis indicates number of cells in single cell reference dataset. For deconvolution, x-axis indicates number of spots subject to deconvolution.
-
+The datasets presented in this study can be found in online repositories as outlined below. Danish legislation regarding sharing of human data requires that the spatial transcriptomics data can be made available upon reasonable request to the corresponding author and approval from The Danish Data Protection Agency.
 
 Atherosclerosis scRNA from [Wirka et al. 2019](https://doi.org/10.1038/s41591-019-0512-5), [Pan et al. 2020](https://pubmed.ncbi.nlm.nih.gov/32962412/), and [Alsaigh et al. 2020](https://doi.org/10.1038/s42003-022-04056-7). All of which can be obtained from the [PlaqView Portal](https://www.plaqview.com/).
 
@@ -39,6 +26,17 @@ anndata 0.8.0.
 Packages Seurat 4.3.0, SeuratDisk 0.0.0.9020, SeuratData 0.2.2, tidyverse 1.3.2,
 ggplot 3.4.0 were used for data wrangling and visualizations.
 
+## Supplementary Figures
+
+Supplementary Figure 1. Single cell RNA reference data UMAP with cell type labels.
+Top are major CVD cell types, bottom are major cell types within CKD atlas.
+CKD abbreviations as follows: PT, Proximal Tubular; EC, Endothelial Cell; TAL, Thick Ascending Limb; ATL, Ascending Thin Limb; IC, Intercalated Cell; CNT,Connecting Tubule; DTL, Descending Thin Limb; DCT, Distal Convoluted Tubule; PEC, Parietal Epithelial Cell; POD, Podocyte; PC, Principal Cell.
+
+Supplementary Figure 2: For each method deconvolution of sample CVD2 was repeated with multiple different reference sizes. Correlation between independent deconvolutions was calculated to determine degree of variation in prediction as a function of reference data size. Cell2location is observed to be more consistent across cell types.
+
+Supplementary Figure 3: The RMSRD between each pair of methods, with a lower value indication more similar results for the specific cell type.
+
+Supplementary Figure 4: Benchmarking the deconvolution time requirements across methods. For the reference preparation step the x-axis indicates number of cells in single cell reference dataset. For deconvolution, x-axis indicates number of spots subject to deconvolution.
 
 ## Poster presented at ISMB-ECCB 2023 in Lyon
 
